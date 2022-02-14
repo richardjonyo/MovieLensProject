@@ -1,0 +1,7 @@
+"0","anyNA(edx) #check missing values - results to FALSE"
+"1","[1]"
+"1"," FALSE"
+"1","
+"
+"0","#We have 69,878 users and 10,677 movies in the edx set"
+"0","edx %>% summarize(n_users = n_distinct(userId), n_movies = n_distinct(movieId))"

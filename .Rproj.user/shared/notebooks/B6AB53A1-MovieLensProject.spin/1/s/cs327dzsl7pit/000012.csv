@@ -1,0 +1,10 @@
+"0",""
+"0","#We plot mean rating by users"
+"0","edx %>% group_by(userId) %>%"
+"0","  summarise(mean_rating = sum(rating)/n()) %>%"
+"0","  ggplot(aes(mean_rating, fill = ""brown"")) +"
+"0","  geom_histogram( bins=30, color=""black"", show.legend = FALSE) +"
+"0","  labs(x = ""Average rating"", y = ""Number of users"")+"
+"0","  ggtitle(""Average ratings by users"")"
+"2","`summarise()` ungrouping output (override with `.groups` argument)
+"
