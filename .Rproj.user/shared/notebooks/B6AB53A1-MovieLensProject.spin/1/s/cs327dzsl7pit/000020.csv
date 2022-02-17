@@ -1,7 +1,0 @@
-"0","  "
-"0","  "
-"0","  "
-"0","  ##CONCLUSIONS## "
-"0","  #We employed a 4-step approach to come up with a movie recommendation model. "
-"0","  #The final model (fourth model) is the preferred recommendation model since its RMSE is below the target of 0.8649."
-"0","  "

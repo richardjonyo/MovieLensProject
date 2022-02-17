@@ -1,7 +1,0 @@
-"0","# We visualize the training set rating distribution"
-"0","edx %>% "
-"0","ggplot(aes(rating, y = ..prop..)) +"
-"0","  geom_bar(fill = ""brown"") +"
-"0","  ggtitle(""Training set rating distribution"")+"
-"0","  scale_x_continuous(breaks = c(0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5))+ "
-"0","labs(x = ""Rating distribution"", y = ""Frequency"")"

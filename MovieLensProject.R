@@ -19,6 +19,7 @@ library(tidyverse)
 library(caret)
 library(data.table)
 library(lubridate)
+library(dplyr)
 
 # MovieLens 10M dataset:
 # https://grouplens.org/datasets/movielens/10m/
@@ -58,15 +59,13 @@ edx <- rbind(edx, removed)
 
 rm(dl, ratings, movies, test_index, temp, movielens, removed)
 
-
-#The edx dataset has 9,000,055 observations and 6 columns
-#Each observation is a rating provided by a user for a movie
-#We divide it into two sets: training and test sets
-#The test set will be split into two to be used in our algorithm and for testing
+#We divide into two sets: training and test sets
+#The test set will be split into two
+#test_dataset: to evaluate and test the model when building the model
+#validation: to evaluate the final model
 test_dataset <- createDataPartition(y = edx$rating, times = 1, p = 0.1, list = FALSE)
 training_dataset <- edx[-test_dataset,]
 temp <- edx[test_dataset,]
-dim(test_dataset) #test set has 900007 records
 dim(training_dataset) #training set has 8100048 records
 
 
@@ -78,7 +77,10 @@ test_dataset <- temp %>%
 # We add the rows removed from or test dataset into training set
 removed_rows <- anti_join(temp, test_dataset)
 training_dataset <- rbind(training_dataset, removed_rows)
+dim(test_dataset)#test set has 899,993 records
 #rm(test_dataset, temp, removed_rows)
+
+
 
 ##EXPLORATORY ANALYSIS##
 head(edx) #Preview edx
@@ -98,6 +100,7 @@ unique(edx$rating)
 
 #Movie ratings
 #Pulp Fiction (1994), Forrest Gump (1994) and Silence of the Lambs (1991) are the highest rated in that order
+##plotting top 10 most popular movies
 edx %>%
   group_by(title) %>%
   summarize(count = n()) %>%
@@ -106,23 +109,64 @@ edx %>%
   ggplot(aes(count, reorder(title, count))) +
   geom_bar(color = "black", fill = "brown", stat = "identity") +
   ggtitle("Top 10 most popular movies")+
+  theme(plot.title = element_text(hjust = 0.5))+
   xlab("Count of ratings") +
   ylab(NULL) 
+
+mean = mean(edx$rating)#mean
 
 # We visualize the training set rating distribution
 edx %>% 
 ggplot(aes(rating, y = ..prop..)) +
   geom_bar(fill = "brown") +
   ggtitle("Training set rating distribution")+
+  theme(plot.title = element_text(hjust = 0.5))+
   scale_x_continuous(breaks = c(0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5))+ 
-labs(x = "Rating distribution", y = "Frequency")
+  labs(x = "Movie rating", y = "No. of ratings")
+
+#We plot the no. of ratings by users
+edx %>% 
+  count(userId) %>% 
+  ggplot(aes(n, fill = "brown")) + 
+  geom_histogram( bins=30, color="black", show.legend = FALSE) +
+  scale_x_log10() +
+  labs(x = "Users", y = "Number of ratings")+
+  ggtitle("Number of ratings by users")+
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+#We plot mean rating by users
+edx %>% group_by(userId) %>%
+  summarise(mean_rating = sum(rating)/n()) %>%
+  ggplot(aes(mean_rating, fill = "brown")) +
+  geom_histogram( bins=30, color="black", show.legend = FALSE) +
+  labs(x = "Average rating", y = "Number of users")+
+  ggtitle("Average ratings by users")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 #We have the release year from the  title into a separate column
 edx <- edx %>% mutate(release_year = as.numeric(str_extract(str_extract(title, "[/(]\\d{4}[/)]$"), regex("\\d{4}"))),title = str_remove(title, "[/(]\\d{4}[/)]$"))
 
+#Plot for average rating through the years
+edx %>% group_by(release_year) %>%
+  summarise(n =n(), avg = mean(rating)) %>%
+  ggplot(aes(release_year, avg))+
+  geom_point()+geom_hline(yintercept = mean, color = "red")+labs(x="Release Year",y="Average rating")+theme(axis.text = element_text(size=12,face = "bold"))+
+  ggtitle('Average rating through the years')+
+  theme(plot.title = element_text(hjust = 0.5))
+
+#count of ratings over years
+edx %>% group_by(release_year) %>%
+  summarise(ratings = n()) %>%
+  ggplot(aes(release_year, ratings)) +
+  geom_bar(stat = "identity", fill = "gray1", color = "white")+
+  scale_y_continuous(labels = comma)+labs(x="Release year",y="no_rating")+
+  theme(axis.text = element_text(size=12,face = "bold"))
+
+
 #Top 3 movie genres which were highly reviewed
-#Drama, Commedy, and Commedy|Romance
+#Drama, Comedy, and Comedy|Romance
 top_genres <- edx %>% group_by(genres) %>% 
   summarize(count = n()) %>% arrange(desc(count)) %>% head(3)
 top_genres %>% knitr::kable()
@@ -133,32 +177,16 @@ genres_by_year <- edx %>%
   select(movieId, release_year, genres) %>% 
   group_by(release_year, genres) %>% 
   summarise(count = n()) %>% arrange(desc(release_year)) 
+genres_by_year
 
 # Different periods show certain genres being more popular during those periods
 # It is for this reason that we will not include genre into our prediction
 ggplot(genres_by_year, aes(x = release_year, y = count)) + 
   geom_col(aes(fill = genres), position = 'dodge') + 
   ylab('No. of movies') + 
-  ggtitle('Popularity/year by genre')
-
-#We plot the no. of ratings by users
-edx %>% 
-  count(userId) %>% 
-  ggplot(aes(n, fill = "brown")) + 
-  geom_histogram( bins=30, color="black", show.legend = FALSE) +
-  scale_x_log10() +
-  labs(x = "Users", y = "Number of ratings")+
-  ggtitle("Number of ratings by users")
-
-#We plot mean rating by users
-edx %>% group_by(userId) %>%
-  summarise(mean_rating = sum(rating)/n()) %>%
-  ggplot(aes(mean_rating, fill = "brown")) +
-  geom_histogram( bins=30, color="black", show.legend = FALSE) +
-  labs(x = "Average rating", y = "Number of users")+
-  ggtitle("Average ratings by users")
-
-
+  xlab('Release year') +
+  ggtitle('Popularity/year by genre')+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 ###WE BEGIN THE PREDICTION APPROACH##
@@ -168,7 +196,6 @@ edx %>% group_by(userId) %>%
 #Our goal is to reduce the error below 0.8649
 
 #We write a function to compute RMSE. 
-#The value obtained will be the error in star rating
 rmse <- function(true_ratings, predicted_ratings){
   sqrt(mean((true_ratings - predicted_ratings)^2))
 }
@@ -197,10 +224,11 @@ movie_bias <- training_dataset %>%
   group_by(movieId) %>%
   summarize(bias_1 = mean(rating - mean_movie_rating))
 
+#We plot movie bias
 movie_bias %>% ggplot(aes(bias_1)) +
   geom_histogram(color = "black", fill = "brown", bins = 20) +
   xlab("Movie bias") +
-  ylab("Count")+
+  ylab("Count (n)")+
   ggtitle("Movie bias vs count")
 
 #Testing RMSE by adding the movie bias to our second model
@@ -225,6 +253,14 @@ users_bias <- training_dataset %>%
   group_by(userId) %>%
   summarize(bias_2 = mean(rating - mean_movie_rating - bias_1))
 
+#We plot movie + User bias
+users_bias %>% ggplot(aes(bias_2)) +
+  geom_histogram(color = "black", fill = "brown", bins = 20) +
+  xlab("User and movie bias") +
+  ylab("Count (n)")+
+  ggtitle("Movie + User bias")+
+  theme(plot.title = element_text(hjust = 0.5))
+
 predictions <- test_dataset %>%
   left_join(movie_bias, by = "movieId") %>%
   left_join(users_bias, by = "userId") %>%
@@ -237,20 +273,25 @@ predictions <- test_dataset %>%
   results %>% knitr::kable()
   
   ##Fourth Model (regularized movie & user biases)
-  #RMSE = 0.8564223 (This is the final RMSE)
   #Some movies are rated by very few users, this can increase RMSE
   #Regularisation allows for reduced errors caused by movies 
   #with few ratings which can influence the prediction  and skew the error
   
   lambdas <- seq(from=0, to=10, by=0.25)
   rmses <- sapply(lambdas, function(x){
+    
+    #Adjust mean by movie effect and penalize low number on ratings
     movie_bias <- training_dataset %>%
       group_by(movieId) %>%
-      summarize(movie_bias = sum(rating - mean_movie_rating)/(n()+x))
+      summarize(movie_bias = sum(rating - mean_movie_rating)/(n()+x)) 
+    
+    #Adjust mean by user + movie effect and penalize low number of ratings
     user_bias <- training_dataset %>%
       left_join(movie_bias, by = "movieId") %>%
-      group_by(userId) %>%
+      group_by(userId) %>% 
       summarize(user_bias = sum(rating - movie_bias - mean_movie_rating)/(n()+x))
+    
+    #predict ratings in the training set to derive optimal penalty value 'lambda'
     predictions <- test_dataset %>%
       left_join(movie_bias, by = "movieId") %>%
       left_join(user_bias, by = "userId") %>%
@@ -262,10 +303,12 @@ predictions <- test_dataset %>%
   #lambda at 5 produces the lowest RMSE
   qplot(lambdas, rmses, color = I("brown")) 
 
+ #We apply lamda on Validation set
   lamd <- lambdas[which.min(rmses)]
   movie_bias <- edx %>% 
     group_by(movieId) %>%
     summarize(movie_bias = sum(rating - mean_movie_rating)/(n()+lamd))
+  
   #regularize user bias
   user_bias <- edx %>% 
     left_join(movie_bias, by="movieId") %>%
