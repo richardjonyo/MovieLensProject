@@ -2,6 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+.MovieLensProject.log
+.MovieLensProject.tex
 MovieLensProject_files/
 ml-10M100K/
 .Rproj.user/
