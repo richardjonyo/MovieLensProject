@@ -36,7 +36,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={MovieLens Recommendation System},
+  pdftitle={HarvardX:PH125.9x Data Science - Capstone: MovieLens Recommendation System},
   pdfauthor={Richard Jonyo},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
@@ -113,7 +113,8 @@
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 
-\title{MovieLens Recommendation System}
+\title{HarvardX:PH125.9x Data Science - Capstone: MovieLens
+Recommendation System}
 \author{Richard Jonyo}
 \date{19 February 2022}
 
@@ -463,7 +464,7 @@ rate a movie high or less.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{MovieLensProject_files/figure-latex/Plot: Ratings by Users-1.pdf}
+\includegraphics{MovieLensProject_files/figure-latex/Plot - Ratings by Users-1.pdf}
 
 We plot mean rating by users and it is evident that the distribution of
 the average ratings is right-skewed, meaning that many users tend to
@@ -563,7 +564,7 @@ prediction model. Majority of the ratings were done between the years
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{MovieLensProject_files/figure-latex/Plot: Genre by Year-1.pdf}
+\includegraphics{MovieLensProject_files/figure-latex/Plot - Genre by Year-1.pdf}
 
 \hypertarget{results}{%
 \section{3. Results}\label{results}}
@@ -574,7 +575,7 @@ modeling results and discusses the model performance.
 \hypertarget{the-prediction-approach}{%
 \subsubsection{The Prediction Approach}\label{the-prediction-approach}}
 
-We evaluated the accuracy using the RMSE which measures the difference
+The accuracy was evaluated using the RMSE which measures the difference
 between predicted and observed values. Our goal is to reduce the error
 below 0.8649.The RMSE function was defined as follows:
 
@@ -590,10 +591,10 @@ below 0.8649.The RMSE function was defined as follows:
 \hypertarget{first-model-naive-model}{%
 \paragraph{First Model (naive model)}\label{first-model-naive-model}}
 
-For our first model we make a prediction using the mean of the movie
+For the first model we make a prediction using the mean of the movie
 ratings. Also known as the naive model which assumes the movies will
 have the same rating regardless of genre or user. The mean obtained was
-3.512413
+\texttt{mean\_movie\_rating} and RMSE = \texttt{first\_rmse}.
 
 \begin{verbatim}
 ## [1] 3.512509
@@ -604,7 +605,7 @@ lacks accuracy. Our Second Model will attempt to improve the error.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{first\_rmse }\OtherTok{\textless{}{-}} \FunctionTok{rmse}\NormalTok{(training\_dataset}\SpecialCharTok{$}\NormalTok{rating, mean\_movie\_rating)}
+\NormalTok{first\_rmse }\OtherTok{\textless{}{-}} \FunctionTok{rmse}\NormalTok{(test\_dataset}\SpecialCharTok{$}\NormalTok{rating, mean\_movie\_rating)}
 
 \CommentTok{\#Save RMSE result in a dataframe}
 \NormalTok{results }\OtherTok{=} \FunctionTok{data\_frame}\NormalTok{(}\AttributeTok{method =} \StringTok{"Model 1: Using the mean (Naive model)"}\NormalTok{, }\AttributeTok{RMSE =}\NormalTok{ first\_rmse)}
@@ -617,7 +618,7 @@ lacks accuracy. Our Second Model will attempt to improve the error.
 method & RMSE \\
 \midrule
 \endhead
-Model 1: Using the mean (Naive model) & 1.060242 \\
+Model 1: Using the mean (Naive model) & 1.061135 \\
 \bottomrule
 \end{longtable}
 
@@ -667,7 +668,7 @@ model where there RMSE = \texttt{second\_rmse}.
 method & RMSE \\
 \midrule
 \endhead
-Model 1: Using the mean (Naive model) & 1.060242 \\
+Model 1: Using the mean (Naive model) & 1.061135 \\
 Model 2: Mean + movie bias & 1.167344 \\
 \bottomrule
 \end{longtable}
@@ -679,7 +680,7 @@ biases)}\label{third-model-movie-user-biases}}
 As seen previously users can add bias by rating some movies very highly
 or very low. These extreme ratings adds this bias to our mode. Having
 included movie and user biases the error is slightly lower where there
-RMSE = 0.86397.
+RMSE = \texttt{third\_rmse}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -720,7 +721,7 @@ RMSE = 0.86397.
 method & RMSE \\
 \midrule
 \endhead
-Model 1: Using the mean (Naive model) & 1.0602420 \\
+Model 1: Using the mean (Naive model) & 1.0611350 \\
 Model 2: Mean + movie bias & 1.1673443 \\
 Model 3: Mean + movie + user bias & 0.8659736 \\
 \bottomrule
@@ -733,9 +734,9 @@ biases)}\label{fourth-model-regularized-movie-user-biases}}
 Some movies are rated by very few users, this can increase RMSE.
 Regularization allows for reduced errors caused by movies with few
 ratings which can influence the prediction and eventually influence the
-error. The final RMSE obtained for our final model was 0.8564223 which
-is less than the target RMSE of 0.86490 hence providing a better
-accuracy.
+error. The final RMSE obtained for our final model was
+\texttt{fourth\_rmse} which is less than the target RMSE of 0.86490
+hence providing a better accuracy.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -763,7 +764,7 @@ accuracy.
 \end{Shaded}
 
 We plotted RMSE against lambdas to obtain optimal lambda. According to
-the plot below lambda at 4.5 produced the lowest RMSE.
+the plot below lambda at \texttt{lamd} produced the lowest RMSE.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -814,7 +815,7 @@ the plot below lambda at 4.5 produced the lowest RMSE.
 method & RMSE \\
 \midrule
 \endhead
-Model 1: Using the mean (Naive model) & 1.0602420 \\
+Model 1: Using the mean (Naive model) & 1.0611350 \\
 Model 2: Mean + movie bias & 1.1673443 \\
 Model 3: Mean + movie + user bias & 0.8659736 \\
 Model 4: Mean + movie + user bias + Regularisation & 0.8574155 \\
@@ -826,12 +827,13 @@ Model 4: Mean + movie + user bias + Regularisation & 0.8574155 \\
 
 We employed a 4-step approach to come up with a movie recommendation
 model. The final model (fourth model) is the preferred movie
-recommendation model since its RMSE is below the target of 0.8649. The
-limitations of this project included having movies that were rated by a
-small number of users which were not credible enough. Similarly, users
-who rated only a small number of movies should not be taken into account
-to remove the biases. Preferably we should only consider users who have
-given at least 50 ratings. It is also suggested that other data such as
-age, user behavior, gender, etc. could further enhance the final model.
+recommendation model since its RMSE is \texttt{fourth\_rmse} which is
+below the target of 0.8649. The limitations of this project included
+having movies that were rated by a small number of users which were not
+credible enough. Similarly, users who rated only a small number of
+movies should not be taken into account to remove the biases. Preferably
+we should only consider users who have given at least 50 ratings. It is
+also suggested that other data such as age, user behavior, gender, etc.
+could further enhance the final model.
 
 \end{document}

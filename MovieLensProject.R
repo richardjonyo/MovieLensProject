@@ -43,13 +43,13 @@ movies <- as.data.frame(movies) %>% mutate(movieId = as.numeric(movieId),
 movielens <- left_join(ratings, movies, by = "movieId")
 
 # Validation set will be 10% of MovieLens data
-set.seed(1, sample.kind="Rounding") # if using R 3.5 or earlier, use `set.seed(1)`
+set.seed(1, sample.kind="Rounding") # sing R version 4.0.4`
 test_index <- createDataPartition(y = movielens$rating, times = 1, p = 0.1, list = FALSE)
 edx <- movielens[-test_index,]
 temp <- movielens[test_index,]
 
 # Make sure userId and movieId in validation set are also in edx set
-validation <- temp %>% 
+validation  <- temp %>% 
   semi_join(edx, by = "movieId") %>%
   semi_join(edx, by = "userId")
 
@@ -60,13 +60,17 @@ edx <- rbind(edx, removed)
 rm(dl, ratings, movies, test_index, temp, movielens, removed)
 
 #We divide into two sets: training and test sets
-#The test set will be split into two
-#test_dataset: to evaluate and test the model when building the model
-#validation: to evaluate the final model
-test_dataset <- createDataPartition(y = edx$rating, times = 1, p = 0.1, list = FALSE)
-training_dataset <- edx[-test_dataset,]
+set.seed(1, sample.kind="Rounding")
+test_index  <- createDataPartition(y = edx$rating, times = 1, p = 0.1, list = FALSE)
+training_dataset <- edx[-test_index,]
 temp <- edx[test_dataset,]
-dim(training_dataset) #training set has 8100048 records
+
+set.seed(1, sample.kind="Rounding") # if using R 3.5 or earlier, use `set.seed(1)`
+test_index <- createDataPartition(y = movielens$rating, times = 1, p = 0.1, list = FALSE)
+
+temp <- movielens[test_index,]
+
+dim(training_dataset) #training set has 8,100,048 records
 
 
 #We ensure that the userId and movieId are in both training and test sets
@@ -74,11 +78,11 @@ test_dataset <- temp %>%
   semi_join(training_dataset, by = "movieId") %>%
   semi_join(training_dataset, by = "userId") 
 
-# We add the rows removed from or test dataset into training set
+#We add the rows removed from or test dataset into training set
 removed_rows <- anti_join(temp, test_dataset)
 training_dataset <- rbind(training_dataset, removed_rows)
-dim(test_dataset)#test set has 899,993 records
-#rm(test_dataset, temp, removed_rows)
+dim(test_dataset)#test set has 1,000,003 records
+rm(test_index, temp, removed_rows)
 
 
 
@@ -96,7 +100,7 @@ summarize(edx)
 glimpse(edx, width = 50)
 
 # We have 10 ratings from 0.5 to 5.0 with increments of 0.5
-unique(edx$rating) 
+unique(edx$rating) #ratings used on edx
 
 #Movie ratings
 #Pulp Fiction (1994), Forrest Gump (1994) and Silence of the Lambs (1991) are the highest rated in that order
@@ -109,11 +113,11 @@ edx %>%
   ggplot(aes(count, reorder(title, count))) +
   geom_bar(color = "black", fill = "brown", stat = "identity") +
   ggtitle("Top 10 most popular movies")+
-  theme(plot.title = element_text(hjust = 0.5))+
   xlab("Count of ratings") +
   ylab(NULL) 
 
-mean = mean(edx$rating)#mean
+mean = mean(edx$rating)
+mean #mean
 
 # We visualize the training set rating distribution
 edx %>% 
@@ -152,7 +156,7 @@ edx <- edx %>% mutate(release_year = as.numeric(str_extract(str_extract(title, "
 edx %>% group_by(release_year) %>%
   summarise(n =n(), avg = mean(rating)) %>%
   ggplot(aes(release_year, avg))+
-  geom_point()+geom_hline(yintercept = mean, color = "red")+labs(x="Release Year",y="Average rating")+theme(axis.text = element_text(size=12,face = "bold"))+
+  geom_point()+geom_hline(yintercept = mean, color = "red")+labs(x="Release year",y="Average rating")+theme(axis.text = element_text(size=12,face = "bold"))+
   ggtitle('Average rating through the years')+
   theme(plot.title = element_text(hjust = 0.5))
 
@@ -206,12 +210,12 @@ rmse <- function(true_ratings, predicted_ratings){
 #It assumes the movies will have the same rating regardless of genre or user
 #The mean obtained is 3.512413
 mean_movie_rating <- mean(training_dataset$rating)
-mean_movie_rating
+mean_movie_rating #mean rating
 
 #We obtain our first RMSE = 1.060242
 #The error is greater than 1 hence lacks accuracy. 
 #Our Second Model will attempt to improve the error.
-first_rmse <- rmse(training_dataset$rating, mean_movie_rating)
+first_rmse <- rmse(test_dataset$rating, mean_movie_rating)
 
 #Save RMSE result in a dataframe
 results = data_frame(method = "Model 1: Using the mean (Naive model)", RMSE = first_rmse)
@@ -229,15 +233,14 @@ movie_bias %>% ggplot(aes(bias_1)) +
   geom_histogram(color = "black", fill = "brown", bins = 20) +
   xlab("Movie bias") +
   ylab("Count (n)")+
-  ggtitle("Movie bias vs count")
+  ggtitle("Movie bias")
 
 #Testing RMSE by adding the movie bias to our second model
-#RMSE = 0.9423017
 #There is a slight improvement on our second model
-predictions <- mean_movie_rating + training_dataset %>%
+predictions <- mean_movie_rating + test_dataset %>%
   left_join(movie_bias, by = "movieId") %>%
   pull(bias_1)
-second_rmse <- rmse(predictions, training_dataset$rating)
+second_rmse <- rmse(predictions, test_dataset$rating)
 results <- bind_rows(results,
                           data_frame(method="Model 2: Mean + movie bias",
                                      RMSE = second_rmse))
@@ -300,11 +303,12 @@ predictions <- test_dataset %>%
     return(rmse(predictions, test_dataset$rating))
   })
   #We plot RMSE against lambdas to obtain optimal lambda
-  #lambda at 5 produces the lowest RMSE
   qplot(lambdas, rmses, color = I("brown")) 
 
  #We apply lamda on Validation set
   lamd <- lambdas[which.min(rmses)]
+  lamd #best lamda
+  
   movie_bias <- edx %>% 
     group_by(movieId) %>%
     summarize(movie_bias = sum(rating - mean_movie_rating)/(n()+lamd))

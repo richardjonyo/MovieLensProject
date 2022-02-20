@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.2.16)  17 FEB 2022 17:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.2.16)  18 FEB 2022 08:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -419,36 +419,36 @@ File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 No file MovieLensProject.aux.
 \openout1 = `MovieLensProject.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Info: Redefining \microtypecontext on input line 120.
-Package microtype Info: Applying patch `item' on input line 120.
-Package microtype Info: Applying patch `toc' on input line 120.
-Package microtype Info: Applying patch `eqnum' on input line 120.
-Package microtype Info: Applying patch `footnote' on input line 120.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Info: Redefining \microtypecontext on input line 121.
+Package microtype Info: Applying patch `item' on input line 121.
+Package microtype Info: Applying patch `toc' on input line 121.
+Package microtype Info: Applying patch `eqnum' on input line 121.
+Package microtype Info: Applying patch `footnote' on input line 121.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 120.
+LaTeX Info: Redefining \showhyphens on input line 121.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -475,7 +475,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 (C:\Program Files\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 120.
+Package hyperref Info: Link coloring OFF on input line 121.
 (C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 (C:\Program Files\MiKTeX\tex/latex/refcount\refcount.sty
@@ -485,9 +485,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count310
 )
-LaTeX Info: Redefining \ref on input line 120.
-LaTeX Info: Redefining \pageref on input line 120.
-LaTeX Info: Redefining \nameref on input line 120.
+LaTeX Info: Redefining \ref on input line 121.
+LaTeX Info: Redefining \pageref on input line 121.
+LaTeX Info: Redefining \nameref on input line 121.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -523,39 +523,39 @@ LaTeX Info: Redefining \nameref on input line 120.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-22.
+23.
 (C:\Program Files\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-22.
+23.
 (C:\Program Files\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-122.
+123.
 (C:\Program Files\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-122.
+123.
 (C:\Program Files\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 122.
+(Font)              <12> on input line 123.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 122.
+(Font)              <8> on input line 123.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 122.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 122
+(Font)              <6> on input line 123.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 123
 .
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (C:\Program Files\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 122
+LaTeX Font Info:    Trying to load font information for U+msb on input line 123
 .
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -563,17 +563,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-81.
+82.
 (C:\Program Files\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 183.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 184.
 [1
 
 {C:/Users/rjonyo/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-234.
+235.
 (C:\Program Files\MiKTeX\tex/latex/lm\ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [2] [3]
@@ -583,7 +583,7 @@ File: MovieLensProject_files/figure-latex/Movie Ratings-1.pdf Graphic file (typ
 e pdf)
 <use MovieLensProject_files/figure-latex/Movie Ratings-1.pdf>
 Package pdftex.def Info: MovieLensProject_files/figure-latex/Movie Ratings-1.pd
-f  used on input line 419.
+f  used on input line 420.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [4]
 <MovieLensProject_files/figure-latex/Plot: Rating Distribution-1.pdf, id=46, 46
@@ -592,16 +592,16 @@ File: MovieLensProject_files/figure-latex/Plot: Rating Distribution-1.pdf Graph
 ic file (type pdf)
 <use MovieLensProject_files/figure-latex/Plot: Rating Distribution-1.pdf>
 Package pdftex.def Info: MovieLensProject_files/figure-latex/Plot: Rating Distr
-ibution-1.pdf  used on input line 442.
+ibution-1.pdf  used on input line 443.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [5 <./MovieLensProject_files/figure-latex/Movie Ratings-1.pdf>]
-<MovieLensProject_files/figure-latex/Plot: Ratings by Users-1.pdf, id=56, 469.7
-55pt x 325.215pt>
-File: MovieLensProject_files/figure-latex/Plot: Ratings by Users-1.pdf Graphic 
-file (type pdf)
-<use MovieLensProject_files/figure-latex/Plot: Ratings by Users-1.pdf>
-Package pdftex.def Info: MovieLensProject_files/figure-latex/Plot: Ratings by U
-sers-1.pdf  used on input line 466.
+<MovieLensProject_files/figure-latex/Plot - Ratings by Users-1.pdf, id=56, 469.
+755pt x 325.215pt>
+File: MovieLensProject_files/figure-latex/Plot - Ratings by Users-1.pdf Graphic
+ file (type pdf)
+<use MovieLensProject_files/figure-latex/Plot - Ratings by Users-1.pdf>
+Package pdftex.def Info: MovieLensProject_files/figure-latex/Plot - Ratings by 
+Users-1.pdf  used on input line 467.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [6 <./MovieLensProject_files/figure-latex/Plot: Rating Distribution-1.pdf>]
 <MovieLensProject_files/figure-latex/Plot: Mean Rating by Users-1.pdf, id=68, 4
@@ -610,35 +610,35 @@ File: MovieLensProject_files/figure-latex/Plot: Mean Rating by Users-1.pdf Grap
 hic file (type pdf)
 <use MovieLensProject_files/figure-latex/Plot: Mean Rating by Users-1.pdf>
 Package pdftex.def Info: MovieLensProject_files/figure-latex/Plot: Mean Rating 
-by Users-1.pdf  used on input line 485.
+by Users-1.pdf  used on input line 486.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[7 <./MovieLensProject_files/figure-latex/Plot: Ratings by Users-1.pdf>]
+[7 <./MovieLensProject_files/figure-latex/Plot - Ratings by Users-1.pdf>]
 <MovieLensProject_files/figure-latex/Plot - Rating over Years-1.pdf, id=79, 469
 .755pt x 325.215pt>
 File: MovieLensProject_files/figure-latex/Plot - Rating over Years-1.pdf Graphi
 c file (type pdf)
 <use MovieLensProject_files/figure-latex/Plot - Rating over Years-1.pdf>
 Package pdftex.def Info: MovieLensProject_files/figure-latex/Plot - Rating over
- Years-1.pdf  used on input line 509.
+ Years-1.pdf  used on input line 510.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [8 <./MovieLensProject_files/figure-latex/Plot: Mean Rating by Users-1.pdf>]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 2 on input line 535.
+(longtable)                in table 2 on input line 536.
 
 [9 <./MovieLensProject_files/figure-latex/Plot - Rating over Years-1.pdf>]
-<MovieLensProject_files/figure-latex/Plot: Genre by Year-1.pdf, id=105, 469.755
-pt x 325.215pt>
-File: MovieLensProject_files/figure-latex/Plot: Genre by Year-1.pdf Graphic fil
-e (type pdf)
-<use MovieLensProject_files/figure-latex/Plot: Genre by Year-1.pdf>
-Package pdftex.def Info: MovieLensProject_files/figure-latex/Plot: Genre by Yea
-r-1.pdf  used on input line 566.
+<MovieLensProject_files/figure-latex/Plot - Genre by Year-1.pdf, id=105, 469.75
+5pt x 325.215pt>
+File: MovieLensProject_files/figure-latex/Plot - Genre by Year-1.pdf Graphic fi
+le (type pdf)
+<use MovieLensProject_files/figure-latex/Plot - Genre by Year-1.pdf>
+Package pdftex.def Info: MovieLensProject_files/figure-latex/Plot - Genre by Ye
+ar-1.pdf  used on input line 567.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[10 <./MovieLensProject_files/figure-latex/Plot: Genre by Year-1.pdf>]
+[10 <./MovieLensProject_files/figure-latex/Plot - Genre by Year-1.pdf>]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 3 on input line 622.
+(longtable)                in table 3 on input line 623.
 
 <MovieLensProject_files/figure-latex/MOdel 2 - Movie Bias-1.pdf, id=121, 469.75
 5pt x 325.215pt>
@@ -646,30 +646,30 @@ File: MovieLensProject_files/figure-latex/MOdel 2 - Movie Bias-1.pdf Graphic fi
 le (type pdf)
 <use MovieLensProject_files/figure-latex/MOdel 2 - Movie Bias-1.pdf>
 Package pdftex.def Info: MovieLensProject_files/figure-latex/MOdel 2 - Movie Bi
-as-1.pdf  used on input line 648.
+as-1.pdf  used on input line 649.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (140.50058pt too wide) in paragraph at lines 648--649
+Overfull \hbox (140.50058pt too wide) in paragraph at lines 649--650
  []\T1/lmr/bx/n/10 (-20) Second Model (movie bias)[] [] 
  []
 
 [11]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 4 on input line 673.
+(longtable)                in table 4 on input line 674.
 
 [12 <./MovieLensProject_files/figure-latex/MOdel 2 - Movie Bias-1.pdf>]
 ! Missing endcsname inserted.
 <to be read again> 
                    &
-l.701 ...latex/MOdel 3 - Movie \& User Bias-1.pdf}
+l.702 ...latex/MOdel 3 - Movie \& User Bias-1.pdf}
                                                    
 Here is how much of TeX's memory you used:
- 14286 strings out of 478584
- 227813 string characters out of 2854213
- 566002 words of memory out of 3000000
+ 14288 strings out of 478584
+ 227849 string characters out of 2854213
+ 566275 words of memory out of 3000000
  32110 multiletter control sequences out of 15000+600000
- 504275 words of font info for 92 fonts, out of 8000000 for 9000
+ 504358 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,6n,77p,1015b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
 
