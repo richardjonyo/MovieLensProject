@@ -49,29 +49,21 @@ edx <- movielens[-test_index,]
 temp <- movielens[test_index,]
 
 # Make sure userId and movieId in validation set are also in edx set
-validation  <- temp %>% 
+test_dataset  <- temp %>% 
   semi_join(edx, by = "movieId") %>%
   semi_join(edx, by = "userId")
 
 # Add rows removed from validation set back into edx set
-removed <- anti_join(temp, validation)
+removed <- anti_join(temp, test_dataset)
 edx <- rbind(edx, removed)
 
 rm(dl, ratings, movies, test_index, temp, movielens, removed)
 
 #We divide into two sets: training and test sets
-set.seed(1, sample.kind="Rounding")
 test_index  <- createDataPartition(y = edx$rating, times = 1, p = 0.1, list = FALSE)
 training_dataset <- edx[-test_index,]
-temp <- edx[test_dataset,]
-
-set.seed(1, sample.kind="Rounding") # if using R 3.5 or earlier, use `set.seed(1)`
-test_index <- createDataPartition(y = movielens$rating, times = 1, p = 0.1, list = FALSE)
-
-temp <- movielens[test_index,]
-
-dim(training_dataset) #training set has 8,100,048 records
-
+temp <- edx[test_index,]
+dim(training_dataset)
 
 #We ensure that the userId and movieId are in both training and test sets
 test_dataset <- temp %>%

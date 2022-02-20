@@ -2,9 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
-.MovieLensProject.log
-.MovieLensProject.tex
-.MovieLensProject.docx
+*.log
+*.txt
+*.tex
+*.docx
 MovieLensProject_files/
 ml-10M100K/
 Rproj.user/

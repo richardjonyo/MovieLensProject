@@ -87,8 +87,8 @@ test_dataset  <- temp %>%
 # Add rows removed from validation set back into edx set
 removed <- anti_join(temp, test_dataset)
 edx <- rbind(edx, removed)
-#dim(test_dataset)#test set has 899,988 records
-#rm(test_index, temp, removed)
+dim(test_dataset)#test set has 899,988 records
+
 rm(dl, ratings, movies, test_index, temp, movielens, removed)
 
 ```
